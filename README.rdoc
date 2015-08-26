@@ -1,28 +1,24 @@
-== README
+# Projeto Vetkatia
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+__Projeto para clinica veterinária onde é possivel salvar dados de clientes e animais e controle de medicamentos.__
 
-Things you may want to cover:
+## Configuração
 
-* Ruby version
+- Pacotes basicos que devem ser instalados
+  ```bash
+  sudo apt-get install curl build-essential openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison subversion
+  ```
+- Ruby
+  ``curl -L https://get.rvm.io | bash -s stable
+source ~/.rvm/scripts/rvm``
+``rvm list known`` Para ver a versão mais nova
+``rvm install 2.2.0`` ou versão mais nova
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+- Rails
+  gem install rails
+  
+- Atualizar gems
+  ``bundle install``
+  
+## Iniciar servidor
+  bundle exec rails server
