@@ -1,0 +1,38 @@
+.row
+    .col id="father"
+        -if !logged?
+            -flash.each do |message_type, message|
+                div class="alert alert-#{message_type} text-center login-error"
+                    span class="glyphicon glyphicon-exclamation-sign"
+                    =  message
+        
+        .flip
+            .tab1.fixed-glow
+                h1.login-title Sistema VetKatia
+                = image_tag "logo.png",:class => "img-responsive center-block"
+                = form_for :session, url: login_path,:html => {:class => "form-signin"} do |f|
+                    = f.text_field :email, class: 'form-control orange-glow', placeholder:"E-mail"
+                    = f.password_field :password, class: 'form-control orange-glow', placeholder: "Senha"
+                    = f.submit "Login", class: "btn btn-warning btn-lg btn-block orange-glow"
+            -if flash.empty?
+                h4
+                    label id="link" class="change-frame label label-warning pull-right" Esqueceu sua senha ?
+            -else
+                h4
+                    label id="link" class="change-frame label label-warning pull-right less-top" Esqueceu sua senha ?
+
+            .tab2.fixed-glow
+                h1.login-title Sistema VetKatia
+                
+                div
+                    h4.text-center 
+                        span class="glyphicon glyphicon-edit"  
+                        |  Recuperar Senha
+
+                = form_for :reset, url: login_path,method: "PUT",:html => {:class => "form-signin"} do |f|
+                    = f.text_field :email, class: 'form-control orange-glow', placeholder:"E-mail"
+                    = f.text_field :confirm_email, class: 'form-control orange-glow', placeholder:"Confirmar Email"
+                    = f.password_field :password, class: 'form-control orange-glow no-margin', placeholder: "Nova senha"
+                    = f.password_field :confirm_password, class: 'form-control orange-glow', placeholder: "Confirmar nova senha"
+                    br
+                    = f.submit "Enviar confirmação", class: "btn btn-warning btn-lg btn-block orange-glow"

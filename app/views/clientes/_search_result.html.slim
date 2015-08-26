@@ -1,0 +1,10 @@
+ul
+  - if @search
+    - @search.each do |search|
+      tr
+        td.centro= link_to "",cliente_path(search.id),:class => "glyphicon glyphicon-info-sign info",:alt => "Informações do Cliente",:tooltip => "Informações do Cliente"
+        td.centro = search.name
+        td.centro = search.adress
+        td.centro = search.neighborhood
+        td.centro = search.phone
+        td.centro = search.cel

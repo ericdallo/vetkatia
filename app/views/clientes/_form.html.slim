@@ -1,0 +1,87 @@
+br/
+br/
+= form_for @cliente, :class => "form-horizontal"  do |f|
+  = render 'layouts/error_messages'
+  fieldset.scheduler-border
+    .form-group
+      = f.label "Nome *",:class => "col-md-3 control-label"
+      .col-md-8
+        = f.text_field :name, :class => "form-control input-md" ,:autofocus => true, autocomplete: "off"
+    br/
+    .strike
+      span
+        span.glyphicon.glyphicon-home aria-hidden="true" 
+    br/
+    .form-group
+      = f.label "Endereço *",:class => "col-md-3 control-label"
+      .col-md-8
+        = f.text_field :adress, :class => "form-control input-md",autocomplete: "off"
+    br/
+    .form-group
+      = f.label "Bairro *",:class => "col-md-3 control-label"
+      .col-md-4
+        = f.text_field :neighborhood, :class => "form-control input-md",autocomplete: "off"
+    br/
+    .form-group
+      = f.label "Cidade *",:class => "col-md-3 control-label"
+      .col-md-4
+        = f.text_field :city, :class => "form-control input-md",autocomplete: "off"
+    br/
+    .form-group
+      = f.label "Estado",:class => "col-md-3 control-label"
+      .col-md-2
+        = f.select(:state, ['SP','AC','AL','AP','AM','BA','CE','DF','ES','GO','MA','MT','MS','MG','PA','PB','PR','PE','PI','RJ','RN','RS','RO','RR','SC','SE','TO',], {}, { :class => 'form-control' })
+    br/
+    .form-group
+      = f.label "CEP",:class => "col-md-3 control-label"
+      .col-md-2
+        = f.text_field :cep, :class => "form-control input-md cep",autocomplete: "off"
+    br/
+    .strike
+      span
+        span.glyphicon.glyphicon-earphone aria-hidden="true" 
+    br/
+    .form-group
+      = f.label "Telefone Residêncial",:class => "col-md-2 control-label"
+      .col-md-2
+        = f.text_field :phone, :class => "form-control input-md phone",autocomplete: "off"
+      .col-md-1
+      = f.label "Telefone Comercial",:class => "col-md-1 control-label"
+      .col-md-2
+        = f.text_field :commercial_phone, :class => "form-control input-md commercial_phone",autocomplete: "off"
+    br/
+    br/
+    br/
+    .form-group
+      = f.label "Celular",:class => "col-md-2 control-label"
+      .col-md-2
+        = f.text_field :cel, :class => "form-control input-md cel",autocomplete: "off"
+      .col-md-1
+      = f.label "Celular Opcional",:class => "col-md-1 control-label"
+      .col-md-2
+        = f.text_field :another_cel, :class => "form-control input-md another_cel",autocomplete: "off"
+    br/
+    br/
+    br/
+    .form-group
+      = f.label "E-mail",:class => "col-md-2 control-label"
+      .col-md-4
+        = f.text_field :email, :class => "form-control input-md email",autocomplete: "off"
+    br/
+    .strike
+      span
+        span.glyphicon.glyphicon-file aria-hidden="true" 
+    br/
+    .form-group
+      = f.label "RG",:class => "col-md-2 control-label"
+      .col-md-4
+        = f.text_field :rg, :class => "form-control input-md", :id => "rg",autocomplete: "off"
+      = f.label "CPF",:class => "col-md-1 control-label"
+      .col-md-2
+        = f.text_field :cpf, :class => "form-control input-md cpf",autocomplete: "off"
+    br/
+    br/
+    .form-group
+      label.col-md-6.control-label for="bt_submit" 
+      .pull-right
+        = f.submit "Confirmar Dados", class: "btn btn-lg btn-success"

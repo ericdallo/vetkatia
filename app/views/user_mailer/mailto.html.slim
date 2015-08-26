@@ -1,0 +1,16 @@
+doctype html
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+  body
+    h2
+      | Olá #{@user.name},
+    h4 Foi solicitado a alteração de senha de seu usuário no Sistema VetKatia.
+    p
+      | Clique no link abaixo para confirmar a alteração da nova senha:
+      b= @pass
+    = link_to "Confirmar senha", raw(login_confirm_url(hash: @user.password_digest,email: @user.email,pass: @pass)), :only_path => false
+    br/
+    br/
+    b
+      i Sistema VetKatia

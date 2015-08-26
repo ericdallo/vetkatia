@@ -1,0 +1,98 @@
+br/
+br/
+= form_for(setup_pet(@pet)) do |f|
+  = render 'layouts/error_messages_pet'
+  fieldset.scheduler-border
+    .form-group
+      = f.label 'Nome *',class: "col-md-3 control-label"
+      .col-md-5
+        = f.text_field :name, class: "form-control input-md" ,autofocus: 'true'
+    br/
+    .form-group
+      = f.label 'Nome do cliente *',class: "col-md-3 control-label"
+      .col-md-5
+        = f.text_field :cliente,class: "form-control input-md", value: @cliente_name
+        
+
+    br/
+    .strike
+      span
+        span.glyphicon.glyphicon-list-alt aria-hidden="true" 
+    br/
+    .form-group
+      = f.label 'Espécie',class: "col-md-3 control-label specie"
+      .col-md-2
+        = f.select :specie ,  ['Canina','Felina'],{}, {class: 'form-control select_race'}
+      = f.label 'Sexo',class: "col-md-1 col-md-offset-2 control-label"
+      .col-md-2
+        = f.select :sex, ['Macho','Fêmea'],{}, {class: 'form-control'}
+    br/
+    .form-group
+      = f.label 'Raça *',class: "col-md-3 control-label"
+      .col-md-3
+        = hidden_field :dogs, '',class: 'dogs',value: Pet.all_dog_races
+        = f.select :race,options_for_select(Pet.all_dog_races,'SRD'),{},{class: "form-control input-md races"}
+    br/
+    .form-group
+      = f.label 'Pelagem *',class: "col-md-3 control-label"
+      .col-md-3
+        = f.text_field :fur,class: "form-control input-md"
+    br/
+    .form-group
+      = f.label 'Data de nascimento',class: "col-md-3 control-label"
+      .col-md-2
+        - if @born_date
+          = f.text_field :born_date,class: "form-control input-md date" ,value: @born_date
+        - else
+          = f.text_field :born_date,class: "form-control input-md date"
+    br/
+    .strike
+      span
+        span.glyphicon.glyphicon-pushpin aria-hidden="true" 
+    br/
+    .form-group
+      = f.label 'Anamnese',class: "col-md-3 control-label"
+      .col-md-8
+        = f.text_area :anamnesis,class: "form-control input-md"
+    br/
+    br/
+    .form-group
+      = f.label 'Histórico',class: "col-md-3 control-label"
+      .col-md-8
+        = f.text_area :historic,class: "form-control input-md"
+    br/
+    br/
+    .form-group
+      = f.label 'Obs.',class: "col-md-3 control-label"
+      .col-md-8
+        = f.text_area :obs,class: "form-control input-md"
+    br/
+    br/
+    .strike
+      span
+        span.glyphicon.glyphicon-check aria-hidden="true" 
+    br/
+    - i = 0
+    - @vaccines.each do |k,v|
+      - if i < 7 || i == 8
+        label.col-md-1.control-label= k
+      - else
+        label.col-md-2.control-label= k
+      .col-md-1.chk-div
+        = f.fields_for :vaccine do |ff|
+          = ff.check_box v,class: "checkbox-inline chk text-center"
+          - if !!date = ff.object.attributes[v+'_due_date']
+            = ff.text_field v + "_due_date",value: Pet.convert_date(date),class: "form-control input-md date"
+      - if v == "v10_4" || v == "v7"
+        br/
+        br/
+        hr/
+        br/
+      - i += 1
+    br/
+    br/
+    br/
+    .form-group
+      label.col-md-6.control-label for="bt_submit" 
+      .pull-right
+        = f.submit "Confirmar Dados", class: "btn btn-lg btn-success"

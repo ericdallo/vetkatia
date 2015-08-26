@@ -1,0 +1,47 @@
+.main-search
+  .container
+    .row
+      .col-xs-12.col-xs-offset-0.col-md-6
+        = form_tag :controller => 'clientes', :action => 'search' do
+          .input-group
+            = text_field_tag :search, params[:search], :id => 'search_field',:class => "form-control orange-glow",:placeholder => "Pesquisar ...", :autofocus => "true"
+            span.input-group-btn
+              button.btn.btn-warning.btn-filter type="submit" 
+                span.glyphicon.glyphicon-search
+  br/
+  br/
+  - if @search
+    span.btn.back-bt
+      b= @search.size
+      |  clientes encontrados
+  .row
+    .panel.panel-success.filterable
+      .pull-right
+        button.btn.btn-warning.btn-filter
+          span.glyphicon.glyphicon-filter
+          | Filtro
+      .panel-heading.heading
+        h3.panel-title
+          b.aller
+            | Clientes
+            b
+      table.table
+        thead
+          tr.filters
+            th
+              spam.form-control Detalhes
+            th
+              input.form-control.centro disabled="disabled" placeholder="Nome" type="text" /
+            th
+              input.form-control.centro disabled="disabled" placeholder="Endereço" type="text" /
+            th
+              input.form-control.centro disabled="disabled" placeholder="Bairro" type="text" /
+            th
+              input.form-control.centro disabled="disabled" placeholder="Telefone" type="text" /
+            th
+              input.form-control.centro disabled="disabled" placeholder="Celular" type="text" /
+        tbody
+          = render partial: 'search_result'
+    br
+    br
+    br

@@ -1,0 +1,45 @@
+// Place all the styles related to the pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$_orange-2:#FF5500;
+$_grey:#F7F7F7;
+
+.image-login{
+    position:fixed;
+    bottom: 0;
+    left: 0;
+}
+
+.login{
+    .container {
+        padding: 10% 0;
+        position: fixed;
+
+    }
+
+    .form-login {
+        padding-top: 10px;
+        padding-bottom: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+        border-radius: 15px;
+        border-color:black;
+        border-width: 5px;
+        box-shadow:0 1px 0 #cfcfcf;
+        background-color: $_grey;
+    }
+
+    h2 {
+        padding-bottom:25px;
+        text-align: center;
+    }
+
+    .form-control {
+        border-radius: 10px;
+    }
+
+    .wrapper {
+        text-align: center;
+    }    
+}

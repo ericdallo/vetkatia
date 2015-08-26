@@ -1,0 +1,117 @@
+.container
+  .row
+    .col-xs-12.col-sm-12.col-md-7.col-lg-8.toppad
+      .panel.panel-info.heading-back
+        .panel-heading.heading
+          h3.panel-title.heading
+            span.glyphicon.glyphicon-user.user aria-hidden="true" 
+            = " #{@cliente.name}"
+        .panel-body
+          .row
+            .col-md-3.col-lg-3 align="center" 
+            .col-md-12.col-lg-12
+              table.table.table-user-information
+                tbody
+                  tr
+                    td Endereço
+                    td= @cliente.adress
+                  tr
+                    td Bairro
+                    td= @cliente.neighborhood
+                  tr
+                    td Cidade
+                    td= @cliente.city
+                  tr
+                    td Estado
+                    td= @cliente.state
+                  tr
+                    td Cep
+                    td= @cliente.cep
+                  tr
+                    td Telefone
+                    td= @cliente.phone
+                  tr
+                    td Telefone Comercial
+                    td= @cliente.commercial_phone
+                  tr
+                    td Celular
+                    td= @cliente.cel
+                  tr
+                    td Celular 2
+                    td= @cliente.another_cel
+                  tr
+                    td E-mail
+                    td= @cliente.email
+                  tr
+                    td RG
+                    td= @cliente.rg
+                  tr
+                    td CPF
+                    td= @cliente.cpf
+              .btn-toolbar
+                a#list_pets.btn.btn-warning.bt-orange data-original-title="Pets" data-toggle="modal" href="#modal_list" type="button"  Pets
+                a.btn.btn-warning.bt-orange disabled="disabled" href="#"  Tosa / Banho
+                = link_to( "Add Pet", pet_cadastro_path(@cliente.id), class: "btn btn-info")
+        .panel-footer
+          - if @cliente.email.blank?
+            a.btn.btn-md.btn-warning.bt-orange data-original-title="E-mail" disabled="disabled" 
+              i.glyphicon.glyphicon-envelope
+          - else
+            a#send_email.btn.btn-warning.bt-orange data-original-title="E-mail" data-toggle="modal" href="#modal_email" type="button" 
+              i.glyphicon.glyphicon-envelope
+
+          span.pull-right.btn-toolbar
+            a href==edit_cliente_path(@cliente) data-original-title="Editar cliente" data-toggle="tooltip" type="button" class="btn btn-md btn-warning"
+              i.glyphicon.glyphicon-edit
+              |  Editar
+            a#excluir_cliente.btn.btn-md.btn-danger data-original-title="Excluir" data-toggle="modal" href="#modal" type="button" 
+              i.glyphicon.glyphicon-remove
+              |  Excluir
+#modal.modal.fade
+  .modal-header
+    a.close data-dismiss="modal"  ×
+    h3 Excluir Cliente ?
+  .modal-body
+    p
+      | Tem certeza que deseja excluir o cliente
+      b= @cliente.name
+      | ?
+  .modal-footer
+    a.btn data-dismiss="modal" href="#"  Fechar
+    = link_to 'Excluir', cliente_path(@cliente),:method => 'DELETE',:class => 'btn btn-danger'
+#modal_list.modal.fade
+  .modal-header
+    a.close data-dismiss="modal"  ×
+    h3 Lista de Pets
+  .modal-body
+    p.text-center
+      span.glyphicon.glyphicon-heart-empty aria-hidden="true" 
+    table.table
+      - Cliente.get_pets(@cliente.id).each do |pet|
+        tr
+          td
+            b= pet.name
+          td= link_to "",pet_path(pet.id),:class => "glyphicon glyphicon-info-sign pull-right info",:alt => "Informações do Pet",:tooltip => "Informações do Pet"
+  .modal-footer
+    a.btn data-dismiss="modal" href="#"  Fechar
+#modal_email.modal.fade
+  = form_for :email, url: cliente_path(@cliente.id)  do |f|
+    .modal-header
+      a.close data-dismiss="modal"  ×
+      h3
+        | Enviar e-mail para #{@cliente.name}
+    .modal-body
+      p
+        | Destinatario: 
+        span.text-info
+          = @cliente.email
+          span
+      = f.hidden_field :id,value: @cliente.id
+      = f.hidden_field :dest,value: @cliente.email
+      = f.text_field :subject,{class: "form-control email-subject",placeholder: "Assunto"}
+      br/
+      = f.text_area :body,{class: "form-control email-body",placeholder: "Mensagem"}
+      legend
+    .modal-footer
+      a.btn data-dismiss="modal" href="#"  Fechar
+      = f.submit 'Enviar',:class => 'btn btn-success email-send disabled'

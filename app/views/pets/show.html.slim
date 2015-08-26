@@ -1,0 +1,68 @@
+.container
+  .row
+    .col-xs-12.col-sm-12.col-md-7.col-lg-8.toppad
+      .panel.panel-info.heading-back
+        .panel-heading.heading
+          h3.panel-title.heading
+            span.glyphicon.glyphicon-heart.user aria-hidden="true" 
+            = " #{@pet.name}"
+        .panel-body
+          .row
+            .col-md-3.col-lg-3 align="center" 
+            .col-md-12.col-lg-12
+              table.table.table-user-information
+                tbody
+                  tr
+                    td Espécie
+                    td= @pet.specie
+                  tr
+                    td Sexo
+                    td= @pet.sex
+                  tr
+                    td Raça
+                    td= @pet.race
+                  tr
+                    td Pelagem
+                    td= @pet.fur
+                  tr
+                    td Data de Nascimento
+                    td= Pet.convert_date @pet.born_date
+                  tr
+                    td Anamnese
+                    td= @pet.anamnesis
+                  tr
+                    td Histórico
+                    td= @pet.historic
+                  tr
+                    td Obs
+                    td= @pet.obs
+                  tr
+                    td Vacinas
+                    td= select_tag "",options_for_select(@vaccines),class: "form-control"
+                  tr
+                    td Dono
+                    td= @pet.cliente.name
+              span.btn-toolbar
+                a href=cliente_path(@pet.cliente.id) class="btn btn-warning bt-orange"
+                  span.glyphicon.glyphicon-user aria-hidden="true" 
+                  |  Dono
+                = link_to "Tosa & Banho", "shear_path", class: "btn btn-primary"
+              span.pull-right.btn-toolbar
+                a href=edit_pet_path(@pet) data-original-title="Editar pet" data-toggle="tooltip" type="button" class="btn btn-md btn-warning"
+                  i.glyphicon.glyphicon-edit
+                  |  Editar
+                a#excluir_pet.btn.btn-md.btn-danger data-original-title="Excluir" data-toggle="modal" href="#modal" type="button" 
+                  i.glyphicon.glyphicon-remove
+                  |  Excluir
+#modal.modal.fade
+  .modal-header
+    a.close data-dismiss="modal"  ×
+    h3 Excluir Pet ?
+  .modal-body
+    p
+      | Tem certeza que deseja excluir o pet
+      b= @pet.name
+      | ?
+  .modal-footer
+    a.btn data-dismiss="modal" href="#"  Fechar
+    = link_to 'Excluir', pet_path(@pet),:method => 'DELETE',:class => 'btn btn-danger'

@@ -1,0 +1,8 @@
+- if @cliente.errors.any?
+  #error_explanation
+    .alert.alert-danger
+      span.glyphicon.glyphicon-exclamation-sign aria-hidden="true" 
+      - if @cliente.errors.messages[:email].nil?
+        | Preencha o/s #{pluralize(@cliente.errors.count, "")} campos obrigatorios
+      - else
+        | E-mail informado inválido

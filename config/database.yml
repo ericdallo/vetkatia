@@ -1,0 +1,24 @@
+
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root
+  password: 123mudar
+
+
+development:
+  <<: *default
+  database: Vetkatia_development
+  socket: /var/run/mysqld/mysqld.sock
+
+test:
+  <<: *default
+  database: Vetkatia_test
+
+production:
+  <<: *default
+  adapter: postgresql
+  database: DATABASE_URL
+  username: USERNAME
+  password:  PASSWORD

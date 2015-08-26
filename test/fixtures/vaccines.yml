@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  v10: false
+  raiva: false
+  giardia: false
+  pneumodog: false
+  triplice_felina: false
+  triplice_felina_raiva: false
+  pet_id: 
+
+two:
+  v10: false
+  raiva: false
+  giardia: false
+  pneumodog: false
+  triplice_felina: false
+  triplice_felina_raiva: false
+  pet_id: 

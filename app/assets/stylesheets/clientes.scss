@@ -1,0 +1,55 @@
+// Place all the styles related to the Clientes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+$_yellow-2: #FFFF30;
+$_orange:#FF9D00;
+$_orange-2:#FF7E00;
+$_orange-low:#FFAE22;
+$_orange-back:#FEF1AF;
+
+.main-cadastro,{
+    padding: 1.5em ;
+    background:#eCeCeC;
+    margin-bottom: 20px;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.6), 0 22px 40px 4px rgba(0,0,0,0.56), 0 0 0 1px rgba(0, 0, 0, 0) !important;
+    border-radius: 5px;
+    input[type=text]:focus,input[type=text]:active,
+    select:focus,select:active{
+        border-color: rgba(255, 136, 0, 0.8);
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 136, 0, 0.6);
+        outline: 0 none;
+    }
+    input[type=submit]:focus,input[type=submit]:active{
+        border-color: rgba(0,255,0,0.8);
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(0,255,0,0.8);
+        outline: 0 none;  
+    }
+    .control-label{
+        font-family: "Aller";
+        font-size: 11pt;
+    }
+    .title{
+        font-family: "Arial Black";
+        font-size:19pt;
+        background-color:$_orange;
+        color:black;
+        padding:0.2em;
+        padding-bottom:0;
+    }
+    
+    .contato{
+        font-size:16pt;
+    }
+
+}
+
+.heading{
+    background-color: $_orange-back !important;
+    color:$_orange-2 !important;
+    border-color: $_orange-back !important;
+}
+.heading-back{
+    border-color: $_orange !important;
+}

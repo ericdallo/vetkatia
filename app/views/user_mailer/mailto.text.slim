@@ -1,0 +1,8 @@
+| Olá #{@user.name},
+
+| Foi solicitado a alteração de senha de seu usuário no Sistema VetKatia.
+| Clique no link abaixo para confirmar a alteração da nova senha: #{@pass}
+
+| \#{link_to "Confirmar senha", login_confirm_url(hash: @user.password_digest,email: @user.email,pass: @pass), :only_path => false}
+
+| Sistema VetKatia

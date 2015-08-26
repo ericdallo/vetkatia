@@ -1,0 +1,96 @@
+doctype html
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+    title Vetkatia
+    meta content="width=device-width, initial-scale=1" name="viewport" /
+    meta content="#FFB338" name="theme-color" /
+    = favicon_link_tag 'logo.png'
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    - if logged?
+      - titulo = "Bem-vindo"
+      - subtitulo = "Opções"
+      - link = "/home"
+      - div_class_left="col-sm-3 col-md-2 affix-sidebar"
+      - div_class_right="col-sm-9 col-md-10 affix-content"
+    - else
+      - div_class_left="affix-sidebar"
+      - div_class_right="affix-content back-img login-responsive"
+      - titulo = "Login"
+      - subtitulo = ""
+      - link = "/"
+  body
+    .row.affix-row
+      div class="#{div_class_left}"
+        - if logged?
+          .sidebar-nav
+            .navbar.navbar-default role="navigation" 
+              .navbar-header
+                button.navbar-toggle data-target=".sidebar-navbar-collapse" data-toggle="collapse" type="button" 
+                  span.sr-only Navegar
+                  span.icon-bar
+                  span.icon-bar
+                  span.icon-bar
+                span.visible-xs.navbar-brand Menu Lateral
+              .navbar-collapse.collapse.sidebar-navbar-collapse
+                ul.nav.navbar-nav
+                  li.active
+                    a.collapsed data-parent="#sidenav01" data-target="#toggleDemo0" data-toggle="collapse" href="#" 
+                      = image_tag "logo.png",:class => "img-responsive img-circle img-nav"
+                      h4.lg-font
+                        = titulo
+                        br/
+                        small
+                          = subtitulo
+                          span.caret
+                    #toggleDemo0.collapse style=("height: 0px;")
+                      ul.nav.nav-list
+                        li= link_to "Conta", conta_path,:class => "sm-font sub-font"
+                        li= link_to "Sair", logout_path, method: "delete",:class => "sm-font exit sub-font"
+                  li
+                    a.md-font.font.collapsed data-parent=("#sidena v01") data-target="#toggleDemo" data-toggle="collapse" href="#" 
+                      span.glyphicon.glyphicon-user  Clientes
+                      span.caret.pull-right
+                    #toggleDemo.collapse style=("height: 0px;") 
+                      ul.nav.nav-list
+                        li
+                        li= link_to "Pesquisar", clientes_path,:class => "sm-font sub-font"
+                        li
+                        li= link_to "Cadastrar", cliente_cadastro_path,:class => "sm-font sub-font"
+                  li.active
+                    a.md-font.font.collapsed data-parent="#sidenav01" data-target="#toggleDemo2" data-toggle="collapse" href="#" 
+                      span.glyphicon.glyphicon-heart  Pets
+                      span.caret.pull-right
+                    #toggleDemo2.collapse style=("height: 0px;") 
+                      ul.nav.nav-list
+                        li
+                        li= link_to "Pesquisar", pets_path, :class => "sm-font sub-font"
+                        li
+                        li= link_to "Cadastrar", pet_cadastro_path, :class => "sm-font sub-font"
+                  li
+                    a.md-font.font href="#" 
+                      span.glyphicon.glyphicon-comment  Tosa/Banho
+                  li.active
+                    a.md-font.collapsed.font data-parent="#sidenav01" data-target="#toggleDemo3" data-toggle="collapse" href="#"
+                      span.glyphicon.glyphicon-briefcase  Produtos
+                      span.caret.pull-right
+                    #toggleDemo3.collapse style=("height: 0px;") 
+                      ul.nav.nav-list
+                        li
+                        li= link_to "Medicamentos", medicamentos_path, :class => "sm-font sub-font"
+                        li
+                        li= link_to "Tosa / Banho", "", :class => "sm-font sub-font"
+              /! /.nav-collapse
+      div class="#{div_class_right}"
+        .container
+          - if logged?
+            .page-header
+              h3.btn.btn-default.home-title
+                span.glyphicon.glyphicon-credit-card
+                = link_to " Sistema VetKatia ", link, :class => "no-link "
+            - flash.each do |message_type, message|
+              div class=("alert alert-#{message_type}") = message
+          = yield if logged?
+        = yield unless logged?

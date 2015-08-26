@@ -1,0 +1,62 @@
+$_green: #00EE00;
+$_gray: #EAECEB;
+$_gray-2: #D1D1D1;
+$_yellow-2: #FFFF30;
+$_yellow-3: #FFCC00;
+$_orange:#FF9D00;
+$_orange-2:#FF7E00;
+$_orange-low:#FFAE22;
+$_orange-back:#FEF1AF;
+
+
+.main-search{
+	margin-top:20px;
+	.info{
+		transition:200ms;
+		color:$_orange;
+		font-size:16pt;
+		text-decoration: none;
+		&:hover{
+			color:$_orange-2;
+		}
+	}
+
+	.heading{
+		background-color: $_orange-back !important;
+		color:$_orange-2 !important;
+		border-color: $_orange-back !important;
+	}
+	.btn-filter{
+		background-color: $_orange;
+	}
+
+    
+
+    .filterable {
+        margin-top: 15px;
+    }
+    .filterable .panel-heading .pull-right {
+        margin-top: -20px;
+    }
+    .filterable .filters input[disabled] {
+        background-color: transparent;
+        border: none;
+        cursor: auto;
+        box-shadow: none;
+        padding: 0;
+        height: auto;
+    }
+    .filterable .filters input[disabled]::-webkit-input-placeholder {
+        color: #333;
+    }
+    .filterable .filters input[disabled]::-moz-placeholder {
+        color: #333;
+    }
+    .filterable .filters input[disabled]:-ms-input-placeholder {
+        color: #333;
+    }
+
+    .centro{
+        text-align: center;
+    }
+}

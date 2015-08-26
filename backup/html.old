@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vetkatia</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <%= render 'layouts/header' %>
+  <div id="modal-holder"></div>
+  <div class="container">
+    <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+    <% end %>
+
+    <div class="container">
+
+        <div class="row">
+            <div role="main" class="col-md-8 col-md-push-2">
+                <%= yield %>
+            </div>
+        </div>
+    </div>
+  </div>
+</body>
+</html>
+

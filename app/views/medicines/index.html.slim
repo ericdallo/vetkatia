@@ -1,0 +1,50 @@
+h1.text-center Lista de Medicamentos
+br
+
+= form_for(:medicine,url: medicamentos_path,method: "PUT") do |f|
+    spam.btn-toolbar
+        = link_to "Adicionar linha", medicamentos_path,method: "POST" ,class: "btn-add btn btn-md btn-info pull-right"
+        = f.submit "Salvar", class: "btn btn-md btn-success pull-right",id: "btn-save"
+        h4.pull-left
+            p.label.label-success.notification Planilha salva
+    br
+    legend
+    br
+    div 
+        table class="table table-bordered table-striped no-border" id="sortable"
+            thead
+                colgroup
+                    col
+                    col 
+                tr
+                    th.text-center.none colspan="1" scope="colgroup" 
+                    th.text-center colspan="5" scope="colgroup" Fornecedores
+                tr
+                    th.text-center Produtos
+                    th.text-center Demarc
+                    th.text-center Farmadog
+                    th.text-center Agromarc
+                    th.text-center Zoetis
+                    th
+            tbody.tbody-add
+                - @medicines.each do |m|
+                    tr
+                        - if m.name.blank?
+                            td.green.text-center.update.new.edit name="name#{m.id}" Linha adicionada
+                            = hidden_field_tag "medicine[#{m.id}][name]", ""
+                        -else 
+                            td.text-center.update.edit name="name#{m.id}" =m.name
+                            = hidden_field_tag "medicine[#{m.id}][name]", ""
+                        td.text-center.update.edit name="forn1#{m.id}" =m.forn1
+                        = hidden_field_tag "medicine[#{m.id}][forn1]",  ""
+                        td.text-center.update.edit name="forn2#{m.id}" =m.forn2
+                        = hidden_field_tag "medicine[#{m.id}][forn2]",  ""
+                        td.text-center.update.edit name="forn3#{m.id}" =m.forn3
+                        = hidden_field_tag "medicine[#{m.id}][forn3]",  ""
+                        td.text-center.update.edit name="forn4#{m.id}" =m.forn4
+                        = hidden_field_tag "medicine[#{m.id}][forn4]",  ""
+                        td.excluir.text-center.edit-disabled class="less-padding"
+                          = link_to medicamentos_path(m.id),method: "DELETE",class: "btn-excluir btn size-16",remote: "true"
+                                i class="glyphicon glyphicon-remove-sign dark-red"
+br
+hr            

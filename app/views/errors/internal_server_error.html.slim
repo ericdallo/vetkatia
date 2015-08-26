@@ -1,0 +1,16 @@
+-if logged?
+    .main-error.fixed-glow.col-md-8
+        h2.pull-left.bellota.col-md-7 Ihh...
+        h3.pull-left.bellota.col-md-7 Ocorreu um problema no sistema, tente mais tarde.
+        span.btn-toolbar
+            = image_tag "sad_dog.png",:class => "img-responsive img-error pull-right"
+
+        a class="btn btn-warning btn-lg " href==home_path role="button" Voltar
+-else
+    .main-error.fixed-glow.col-md-8.margin-top
+        h2.pull-left.bellota.col-md-7 Ihh...
+        h3.pull-left.bellota.col-md-7 Ocorreu um problema no sistema, tente mais tarde.
+        span.btn-toolbar
+            = image_tag "sad_dog.png",:class => "img-responsive img-error pull-right"
+
+        a class="btn btn-warning btn-lg " href==home_path role="button" Voltar

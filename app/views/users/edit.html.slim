@@ -1,0 +1,18 @@
+.jumbotron.less-padding.fixed-glow
+  h2.margin-title
+    span.label.label-warning Alterar dados
+  div
+
+    = form_for @user,method: "PUT" do |f|
+      = f.label "Nome de Usuário", class: "input-margin"
+      = f.text_field :name, class: 'form-control input-md chat-input input-margin', value: @current_user.name,:disabled => "disabled"
+      = f.label "E-mail", class: "input-margin"
+      = f.email_field :email, class: 'form-control input-md chat-input input-margin', value: @current_user.email,:disabled => "disabled"
+      = f.label "Senha atual", class: "input-margin"
+      = f.password_field :password, class: 'form-control input-md chat-input input-margin'
+      = f.label "Nova senha	", class: "input-margin"
+      = f.password_field :new_password, class: 'form-control input-md chat-input input-margin'
+      = f.label "Confirmar nova senha", class: "input-margin"
+      = f.password_field :confirm_new_password, class: 'form-control input-md chat-input input-margin'
+      .btn-toolbar
+        = f.submit "Alterar dados", class: "btn btn-success btn-lg pull-right input-margin "

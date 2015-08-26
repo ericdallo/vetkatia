@@ -1,0 +1,32 @@
+#header_custom
+  .navbar.navbar-default.navbar-fixed-top role="navigation" 
+    .container-fluid
+      .navbar-header
+        - if logged?
+          = link_to "VetKatia", home_path, id: "logo",:class => "title title-base navbar-brand"
+        - else
+          = link_to "VetKatia", root_path, id: "logo",:class => "title title-base navbar-brand"
+        button.navbar-toggle data-target=".navbar-menubuilder" data-toggle="collapse" type="button" 
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+      .collapse.navbar-collapse.navbar-menubuilder
+        ul.nav.navbar-nav.navbar-right
+          - if logged?
+            li.dropdown
+              a.dropdown-toggle data-toggle="dropdown" href="#" 
+                | Clientes
+                b.caret
+              ul.dropdown-menu
+                li= link_to "Cadastrar", cliente_cadastro_path
+                li= link_to "Pesquisar", clientes_path
+            li.dropdown
+              a.dropdown-toggle data-toggle="dropdown" href="#" 
+                | Configuraçoes
+                b.caret
+              ul.dropdown-menu
+                li= link_to "Configuracoes", '#'
+                li.divider
+                li
+                  = link_to "Sair", logout_path, method: "delete"
