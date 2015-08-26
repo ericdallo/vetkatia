@@ -15,10 +15,10 @@ source ~/.rvm/scripts/rvm``
 ``rvm install 2.2.0`` ou versão mais nova
 
 - Rails
-  gem install rails
+  ``gem install rails``
   
 - Atualizar gems
   ``bundle install``
   
 ## Iniciar servidor
-  bundle exec rails server
+  ``bundle exec rails server``
