@@ -1,4 +1,4 @@
-# Projeto Vetkatia
+# Projeto Vetkatia <img src="http://vetkatia.herokuapp.com/assets/logo-c959a0ec1643718e1fd4b6620dc27e814c36f931d955e1e69fba20f040469f25.png" width="100"/>
 
 __Projeto para clinica veterinária onde é possivel salvar dados de clientes e animais e controle de medicamentos.__
 
