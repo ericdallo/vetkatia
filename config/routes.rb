@@ -37,6 +37,9 @@ Rails.application.routes.draw do
   resources :clientes
   resources :pets
   resources :medicines
+  resources :exams, only: [:create] do
+    get "serve", :on => :member
+  end
 
   #errors
   #if Rails.env.production?

@@ -52,15 +52,3 @@ class UsersController < ApplicationController
 
 end
 
-
-
-
-
-
-
-
-
-
-
-
-

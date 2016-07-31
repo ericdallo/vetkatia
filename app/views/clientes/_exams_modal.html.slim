@@ -1,0 +1,31 @@
+#modal_exams.modal.fade
+  = form_for @exam, html: {:multipart => true}, url: exams_path(@cliente.id) do |f|
+    .modal-header
+      a.close data-dismiss="modal"  ×
+      h3= "Exames laboratoriais"
+    .modal-body
+      -if @cliente.exams.any?
+        dl.exams
+          - @cliente.exams.each do |exam|
+            .exam
+              dt.name
+                = link_to serve_exam_path(exam), target: '_blank'
+                  = File.basename(exam.filename,File.extname(exam.filename))
+              dd.description= exam.description
+
+      
+    .add-exam
+      label.bt-add
+        i.glyphicon.glyphicon-plus
+        | Escolher exame
+        = f.file_field :data
+      p.file-name
+      = f.text_area :description, placeholder: "Descrição do exame", class: "description"
+      .confirm
+        = f.submit "Confirmar", class: "btn btn-success"
+
+javascript:
+  $('.add-exam input[type="file"]').change(function(e){
+    $('.add-exam .file-name').text(e.target.files[0].name);
+  });
+      
