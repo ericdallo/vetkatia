@@ -1,0 +1,21 @@
+#modal_email.modal.fade
+  = form_for :email, url: cliente_path(@cliente.id)  do |f|
+    .modal-header
+      a.close data-dismiss="modal"  ×
+      h3
+        | Enviar e-mail para #{@cliente.name}
+    .modal-body
+      p
+        | Destinatario:
+        span.text-info
+          = @cliente.email
+          span
+      = f.hidden_field :id,value: @cliente.id
+      = f.hidden_field :dest,value: @cliente.email
+      = f.text_field :subject,{class: "form-control email-subject",placeholder: "Assunto"}
+      br/
+      = f.text_area :body,{class: "form-control email-body",placeholder: "Mensagem"}
+      legend
+    .modal-footer
+      a.btn data-dismiss="modal" href="#"  Fechar
+      = f.submit 'Enviar',:class => 'btn btn-success email-send disabled'

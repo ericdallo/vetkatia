@@ -59,6 +59,8 @@
           - else
             a#send_email.btn.btn-warning.bt-orange data-original-title="E-mail" data-toggle="modal" href="#modal_email" type="button" 
               i.glyphicon.glyphicon-envelope
+            a#exams.btn.btn-success.btn-exams data-original-title="Exames" data-toggle="modal" href="#modal_exams" type="button"
+              i.glyphicon.glyphicon-file
 
           span.pull-right.btn-toolbar
             a href==edit_cliente_path(@cliente) data-original-title="Editar cliente" data-toggle="tooltip" type="button" class="btn btn-md btn-warning"
@@ -79,39 +81,7 @@
   .modal-footer
     a.btn data-dismiss="modal" href="#"  Fechar
     = link_to 'Excluir', cliente_path(@cliente),:method => 'DELETE',:class => 'btn btn-danger'
-#modal_list.modal.fade
-  .modal-header
-    a.close data-dismiss="modal"  ×
-    h3 Lista de Pets
-  .modal-body
-    p.text-center
-      span.glyphicon.glyphicon-heart-empty aria-hidden="true" 
-    table.table
-      - Cliente.get_pets(@cliente.id).each do |pet|
-        tr
-          td
-            b= pet.name
-          td= link_to "",pet_path(pet.id),:class => "glyphicon glyphicon-info-sign pull-right info",:alt => "Informações do Pet",:tooltip => "Informações do Pet"
-  .modal-footer
-    a.btn data-dismiss="modal" href="#"  Fechar
-#modal_email.modal.fade
-  = form_for :email, url: cliente_path(@cliente.id)  do |f|
-    .modal-header
-      a.close data-dismiss="modal"  ×
-      h3
-        | Enviar e-mail para #{@cliente.name}
-    .modal-body
-      p
-        | Destinatario: 
-        span.text-info
-          = @cliente.email
-          span
-      = f.hidden_field :id,value: @cliente.id
-      = f.hidden_field :dest,value: @cliente.email
-      = f.text_field :subject,{class: "form-control email-subject",placeholder: "Assunto"}
-      br/
-      = f.text_area :body,{class: "form-control email-body",placeholder: "Mensagem"}
-      legend
-    .modal-footer
-      a.btn data-dismiss="modal" href="#"  Fechar
-      = f.submit 'Enviar',:class => 'btn btn-success email-send disabled'
+
+= render "pets_modal"
+= render "email_modal"
+= render "exams_modal"

@@ -4,17 +4,17 @@ default: &default
   encoding: utf8
   pool: 5
   username: root
-  password: 123mudar
+  password:
 
 
 development:
   <<: *default
-  database: Vetkatia_development
+  database: vetkatia
   socket: /var/run/mysqld/mysqld.sock
 
 test:
   <<: *default
-  database: Vetkatia_test
+  database: vetkatia
 
 production:
   <<: *default

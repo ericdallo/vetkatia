@@ -53,3 +53,60 @@ $_orange-back:#FEF1AF;
 .heading-back{
     border-color: $_orange !important;
 }
+.btn-exams {
+    margin-left: 1em;
+}
+
+.exams {
+    padding: 1em;
+
+    .exam {
+        display: block;
+        padding: 1em;
+
+        .name {
+            display: inline;
+        }
+
+        .description {
+            float: right;
+        }
+    }
+
+}
+.add-exam {
+    padding: 1em;
+
+    input[type="file"] {
+        display: none;
+    }
+
+    .bt-add {
+        border: 1px solid #666;
+        border-radius: 4px;
+        display: inline-block;
+        margin: 1em 0;
+        padding:0.8em;
+
+        i {
+            margin-right: 0.4em;
+            font-size: 12pt;
+            color: green;
+        }
+    }
+    .file-name{
+        display: inline;
+        margin-left: 1em;
+        font-weight: bold;
+    }
+    .description {
+        display: block;
+        margin: 1em 0;
+        width: 100%;
+    }
+    .confirm {
+        width: 100%;
+        text-align: center;
+    }
+
+}
