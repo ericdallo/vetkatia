@@ -1,0 +1,15 @@
+#modal_list.modal.fade
+  .modal-header
+    a.close data-dismiss="modal"  ×
+    h3 Lista de Pets
+  .modal-body
+    p.text-center
+      span.glyphicon.glyphicon-heart-empty aria-hidden="true" 
+    table.table
+      - Cliente.get_pets(@cliente.id).each do |pet|
+        tr
+          td
+            b= pet.name
+          td= link_to "",pet_path(pet.id),:class => "glyphicon glyphicon-info-sign pull-right info",:alt => "Informações do Pet",:tooltip => "Informações do Pet"
+  .modal-footer
+    a.btn data-dismiss="modal" href="#"  Fechar

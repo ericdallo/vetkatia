@@ -2,6 +2,8 @@ class Cliente < ActiveRecord::Base
 
     before_save { state.upcase! }
 
+    has_many :exams
+
     validates :name, presence: true,
     length: {maximum: 50}
 

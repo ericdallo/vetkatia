@@ -2,7 +2,7 @@ class ClientesController < ApplicationController
     before_action :logged_in_user
 
     def index # pesquisa de clientes
-        
+
     end
 
     def create #novo cliente no sistema
@@ -21,6 +21,7 @@ class ClientesController < ApplicationController
 
     def show
         @cliente = Cliente.find(params[:id])
+        @exam = Exam.new
     end
 
     def edit
